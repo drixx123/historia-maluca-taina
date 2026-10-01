@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="História Maluca - um jogo vintage para dois jogadores"
+    >
+
+    <title>História Maluca</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Special+Elite&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Efeito de textura -->
+    <div class="noise"></div>
+
+    <!-- Moldura principal -->
+    <main class="game">
+
+        <!-- Cabeçalho -->
+        <header class="header">
+
+            <div class="ornament left">❦</div>
+
+            <div class="title-area">
+                <p class="small-title">O GRANDE LIVRO DAS</p>
+
+                <h1>Histórias Malucas</h1>
+
+                <p class="subtitle">
+                    Onde a realidade não tem vez.
+                </p>
+            </div>
+
+            <div class="ornament right">❧</div>
+
+        </header>
+
+
+        <!-- Placar -->
+        <section class="scoreboard">
+
+            <div class="player player-one active" id="playerOneCard">
+
+                <div class="player-icon">♙</div>
+
+                <div>
+                    <span class="player-label">JOGADOR I</span>
+                    <h2>O Narrador</h2>
+                </div>
+
+                <div class="score">
+                    <span>PONTOS</span>
+                    <strong id="scoreOne">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="turn-indicator">
+
+                <div class="turn-number">
+                    <span>RODADA</span>
+                    <strong id="roundNumber">1</strong>
+                </div>
+
+                <div class="quill">✒</div>
+
+            </div>
+
+
+            <div class="player player-two" id="playerTwoCard">
+
+                <div class="player-icon">♞</div>
+
+                <div>
+                    <span class="player-label">JOGADOR II</span>
+                    <h2>O Improvável</h2>
+                </div>
+
+                <div class="score">
+                    <span>PONTOS</span>
+                    <strong id="scoreTwo">0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Livro -->
+        <section class="book">
+
+            <div class="book-header">
+
+                <span class="book-decoration">✦</span>
+
+                <h2>A História</h2>
+
+                <span class="book-decoration">✦</span>
+
+            </div>
+
+
+            <div class="story-container" id="storyContainer">
+
+                <div class="empty-story" id="emptyStory">
+
+                    <div class="big-quill">✒</div>
+
+                    <h3>Era uma vez...</h3>
+
+                    <p>
+                        Uma história que ainda não fazia absolutamente
+                        nenhum sentido.
+                    </p>
+
+                    <span>
+                        O primeiro jogador deve começar.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="story-footer">
+
+                <span>✦</span>
+
+                <span>
+                    Quanto mais absurda, melhor.
+                </span>
+
+                <span>✦</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- Área de ação -->
+        <section class="action-area">
+
+            <div class="current-player">
+
+                <span class="current-label">
+                    É A VEZ DE
+                </span>
+
+                <h2 id="currentPlayer">
+                    Jogador I
+                </h2>
+
+                <p id="turnMessage">
+                    Dê início à confusão...
+                </p>
+
+            </div>
+
+
+            <div class="input-wrapper">
+
+                <textarea
+                    id="phraseInput"
+                    maxlength="180"
+                    rows="3"
+                    placeholder="Escreva uma frase para continuar a história..."
+                    aria-label="Digite sua frase"
+                ></textarea>
+
+
+                <div class="input-footer">
+
+                    <span id="characterCount">
+                        0 / 180
+                    </span>
+
+                    <button id="addPhraseButton">
+                        <span>Adicionar à história</span>
+                        <strong>✦</strong>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Evento absurdo -->
+        <section class="absurd-event" id="absurdEvent">
+
+            <div class="event-icon">☄</div>
+
+            <div class="event-content">
+
+                <span>ACONTECEU ALGO ESTRANHO...</span>
+
+                <p id="eventText">
+                    O universo está observando.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Controles -->
+        <footer class="controls">
+
+            <button class="secondary-button" id="clearButton">
+                ↻ Nova história
+            </button>
+
+            <div class="game-tip">
+                <span>☞</span>
+                <p>
+                    Dica: tente tornar a história mais absurda
+                    a cada rodada.
+                </p>
+            </div>
+
+            <button class="secondary-button" id="finishButton">
+                ✦ Finalizar história
+            </button>
+
+        </footer>
+
+
+        <!-- Rodapé -->
+        <div class="footer-line">
+
+            <span>❦</span>
+
+            <p>
+                UMA OBRA DE ABSURDO & IMAGINAÇÃO
+            </p>
+
+            <span>❧</span>
+
+        </div>
+
+    </main>
+
+
+    <!-- Modal final -->
+    <div class="modal-overlay" id="modalOverlay">
+
+        <div class="final-modal">
+
+            <div class="modal-decoration">❦</div>
+
+            <p class="modal-small">
+                O FIM DA CONFUSÃO
+            </p>
+
+            <h2>A História Terminou!</h2>
+
+            <div class="final-score">
+
+                <div>
+                    <span>JOGADOR I</span>
+                    <strong id="finalScoreOne">0</strong>
+                </div>
+
+                <div class="vs">✦</div>
+
+                <div>
+                    <span>JOGADOR II</span>
+                    <strong id="finalScoreTwo">0</strong>
+                </div>
+
+            </div>
+
+            <p id="finalMessage"></p>
+
+            <button id="newGameButton">
+                Escrever outra história
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
